@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS con nueva paleta de colores */
+:root {
+  --indigo-950: #032938;
+  --cyan-950: #032836;
+  --blue-950: #031622;
+  --white: #ffffff;
+  --white-transparent: rgba(255, 255, 255, 0.1);
+  --white-glow: rgba(255, 255, 255, 0.05);
+}
+
+body {
+  background: linear-gradient(-45deg, 
+    var(--indigo-950),
+    var(--cyan-950),
+    var(--blue-950),
+    var(--indigo-950)
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  min-height: 100vh;
+  color: var(--white);
+  overflow-x: hidden;
+  will-change: background-position;
+  position: relative;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.background-animation {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.geometric-shape {
+  position: absolute;
+  background: var(--white);
+  border-radius: 50%;
+  will-change: transform;
+  transform-origin: center;
+  filter: blur(1px);
+  mix-blend-mode: screen;
+  opacity: 0.05;
+}
+
+.shape1 {
+  width: clamp(150px, 20vw, 200px);
+  height: clamp(150px, 20vw, 200px);
+  top: 10%;
+  left: 10%;
+  animation: float 25s infinite ease-in-out;
+}
+
+.shape2 {
+  width: clamp(200px, 25vw, 300px);
+  height: clamp(200px, 25vw, 300px);
+  top: 60%;
+  right: 15%;
+  animation: float 30s infinite ease-in-out reverse;
+}
+
+.shape3 {
+  width: clamp(100px, 15vw, 150px);
+  height: clamp(100px, 15vw, 150px);
+  bottom: 20%;
+  left: 20%;
+  animation: float 20s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(2%, 5%) rotate(90deg) scale(1.1); }
+  50% { transform: translate(10%, -5%) rotate(180deg) scale(1); }
+  75% { transform: translate(-5%, 10%) rotate(270deg) scale(0.9); }
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  background-color: var(--white);
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  animation: moveParticle 12s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  opacity: 0.6;
+}
+
+@keyframes moveParticle {
+  0% { 
+    transform: translate(0, 0) scale(1); 
+    opacity: 0;
+  }
+  50% { 
+    opacity: 0.6;
+    transform: translate(50vw, 50vh) scale(1.5);
+  }
+  100% { 
+    transform: translate(100vw, 100vh) scale(1);
+    opacity: 0;
+  }
+}
+
+.content-wrapper {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: clamp(1rem, 3vw, 2rem);
+  margin: clamp(1rem, 3vw, 2rem);
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 40px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .geometric-shape {
+    opacity: 0.03;
+    transform: scale(0.8);
+  }
+  
+  body {
+    background-size: 300% 300%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
