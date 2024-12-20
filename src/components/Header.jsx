@@ -6,12 +6,12 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <header className="bg-gradient-to-r from-slate-950 via-cyan-900 to-slate-900 text-gray-800 shadow-lg">
+    <header className="bg-gradient-to-r from-slate-950 via-cyan-900 to-slate-950 text-gray-800 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2 group">
-            <FaLaptopCode className="text-3xl text-sky-500 group-hover:text-blue-600 transition-colors duration-300" />
-            <span className="font-bold text-xl sm:text-2xl md:text-3xl bg-gradient-to-r from-sky-500 to-blue-600 text-transparent bg-clip-text">
+            <FaLaptopCode className="text-3xl text-white group-hover:text-blue-600 transition-colors duration-300" />
+            <span className="font-bold text-xl sm:text-2xl md:text-3xl bg-white text-transparent bg-clip-text">
               HeiTic
             </span>
           </div>
@@ -21,10 +21,10 @@ const Header = () => {
               <a
                 key={item}
                 href="#"
-                className="relative text-zinc-200 hover:text-sky-200 transition-colors duration-300 group text-lg"
+                className="relative text-white hover:text-white transition-colors duration-300 group text-lg"
               >
                 {item}
-                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-sky-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
               </a>
             ))}
           </nav>
